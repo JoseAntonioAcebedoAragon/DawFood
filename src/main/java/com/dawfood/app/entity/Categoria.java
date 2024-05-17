@@ -19,7 +19,7 @@ public class Categoria {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "nombreCategoria", nullable = false)
-    private String nombreCategoria;
+    private NombreCategoria nombreCategoria;
 
     @Column(name = "nombreSubCategoria", nullable = false)
     private String nombreSubCategoria;

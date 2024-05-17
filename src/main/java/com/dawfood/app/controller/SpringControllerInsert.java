@@ -1,6 +1,7 @@
 package com.dawfood.app.controller;
 
 import com.dawfood.app.entity.Categoria;
+import com.dawfood.app.entity.NombreCategoria;
 import com.dawfood.app.entity.Pedido;
 import com.dawfood.app.entity.Producto;
 import com.dawfood.app.service.SpringServiceInsert;
@@ -20,7 +21,7 @@ public class SpringControllerInsert {
     private SpringServiceInsert springServiceInsert;
 
     @GetMapping("/insertarCategoria")
-    public String insertarCategoria(@RequestParam(value = "nombreCategoria") String nombreCategoria,
+    public String insertarCategoria(@RequestParam(value = "nombreCategoria") NombreCategoria nombreCategoria,
                                     @RequestParam(value = "nombreSubCategoria") String nombreSubCategoria) {
         return springServiceInsert.insertarCategoria(nombreCategoria, nombreSubCategoria);
     }

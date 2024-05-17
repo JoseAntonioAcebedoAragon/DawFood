@@ -2,7 +2,6 @@ package com.dawfood.app.service;
 
 import com.dawfood.app.entity.*;
 import com.dawfood.app.repository.*;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +21,7 @@ public class SpringServiceInsert {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    public String insertarCategoria(String nombreCategoria, String nombreSubCategoria) {
+    public String insertarCategoria(NombreCategoria nombreCategoria, String nombreSubCategoria) {
 
         Categoria categoria = new Categoria();
         categoria.setNombreCategoria(nombreCategoria);
