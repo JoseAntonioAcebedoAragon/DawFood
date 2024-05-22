@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Categoria {
 
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     @Column(name = "idCategoria")
-    private Long idCategoria;
+    private long idCategoria;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "nombreCategoria", nullable = false)
