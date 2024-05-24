@@ -15,13 +15,12 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "idCategoria")
-    private long idCategoria;
+    private Long idCategoria;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "nombreCategoria", nullable = false)
-    private NombreCategoria nombreCategoria;
+    @Column(name = "nombreCategoria")
+    private String nombreCategoria;
 
-    @Column(name = "nombreSubCategoria", nullable = false)
+    @Column(name = "nombreSubCategoria")
     private String nombreSubCategoria;
 
 }
