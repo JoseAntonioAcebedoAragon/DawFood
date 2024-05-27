@@ -1,5 +1,6 @@
 package com.dawfood.app.dto;
 
+import com.dawfood.app.entity.NombreCategoria;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CategoriaDto {
-
-    private String nombreCategoria;
+    private Long idCategoria;
+    private NombreCategoria nombreCategoria;
     private String nombreSubCategoria;
-
 }

@@ -1,11 +1,12 @@
 Planificación y Diseño:
 Antes de empezar a codificar, es crucial tener una idea clara de cómo quieres que se vea y funcione tu aplicación. Haz un diseño de la interfaz de usuario y planifica las características que deseas incluir. Esto te ayudará a tener una guía clara mientras trabajas en el proyecto.
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Configuración del Entorno de Desarrollo:
 Asegúrate de tener instaladas todas las herramientas necesarias para desarrollar tu aplicación. Esto incluye un editor de código (como Visual Studio Code, Sublime Text o IntelliJ IDEA), un servidor de base de datos MySQL y el JDK (Java Development Kit) para Java.
-
 Crear la Base de Datos:
 Utiliza MySQL para crear la base de datos que almacenará la información sobre los usuarios, los restaurantes, los menús y los pedidos. Diseña tu esquema de base de datos teniendo en cuenta la estructura de tu aplicación y las relaciones entre las entidades.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Desarrollo del Backend con Spring Boot:
 Comienza creando un proyecto de Spring Boot que actúe como el backend de tu aplicación. Configura las dependencias necesarias para la conexión con la base de datos MySQL y la creación de servicios RESTful para manejar las operaciones CRUD (Create, Read, Update, Delete) en tu aplicación.

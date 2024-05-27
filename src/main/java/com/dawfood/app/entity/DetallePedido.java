@@ -11,18 +11,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DetallePedido {
+    @EmbeddedId
+    private DetallePedidoId id;
 
-    @Id
     @ManyToOne
-    @JoinColumn(name = "idPedido", nullable = false)
+    @MapsId("idPedido")
+    @JoinColumn(name = "id_pedido", referencedColumnName = "idPedido")
     private Pedido pedido;
 
-    @Id
     @ManyToOne
-    @JoinColumn(name = "idProducto", nullable = false)
+    @MapsId("idProducto")
+    @JoinColumn(name = "id_producto", referencedColumnName = "idProducto")
     private Producto producto;
 
-    @Column(name = "cantidadProducto", nullable = false)
+    @Column(name = "cantidad_producto", nullable = false)
     private Integer cantidadProducto;
-
 }

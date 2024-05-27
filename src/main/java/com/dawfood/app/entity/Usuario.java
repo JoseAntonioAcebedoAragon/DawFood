@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Usuario {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idUsuario")
@@ -25,5 +24,4 @@ public class Usuario {
 
     @Column(name = "contrasena", nullable = false)
     private String contrasena;
-
 }

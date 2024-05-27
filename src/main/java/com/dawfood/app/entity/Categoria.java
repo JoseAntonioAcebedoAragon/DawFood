@@ -5,22 +5,26 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "categoria")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Categoria {
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idCategoria")
     private Long idCategoria;
 
-    @Column(name = "nombreCategoria")
-    private String nombreCategoria;
+    @Column(name = "nombreCategoria", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private NombreCategoria nombreCategoria;
 
-    @Column(name = "nombreSubCategoria")
+    @Column(name = "nombreSubCategoria", nullable = false)
     private String nombreSubCategoria;
 
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Producto> productos;
 }
