@@ -13,8 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 public class PedidoDto {
     private Long idPedido;
-    private LocalDateTime fechaHoraPedido;
     private BigDecimal precioPedido;
     private String idTransaccion;
-    private List<DetallePedidoDto> detalles;
 }

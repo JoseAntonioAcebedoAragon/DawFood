@@ -17,39 +17,73 @@ public class SpringControllerInsert {
     @Autowired
     private SpringServiceInsert springServiceInsert;
 
-    @PostMapping("/insertarcategoria")
+    @PostMapping("/insertarCategoria")
     public String insertarCategoria(@RequestBody String json) {
         return springServiceInsert.insertarCategoria(json);
     }
 
-    @GetMapping("/insertarDetallePedido")
-    public String insertarDetallePedido(@RequestParam(value = "pedido") Pedido pedido,
-                                        @RequestParam(value = "producto") Producto producto,
-                                        @RequestParam(value = "cantidadProducto") Integer cantidadProducto) {
-        return (springServiceInsert.insertarDetallePedido(pedido, producto, cantidadProducto));
+    /*
+        http://localhost:8080/insertarCategoria
+        {
+            "nombreCategoria": "COMIDA",
+            "nombreSubCategoria": "Pizza"
+        }
+    */
+
+    @PostMapping("/insertarDetallePedido")
+    public String insertarDetallePedido(@RequestBody String json) {
+        return (springServiceInsert.insertarDetallePedido(json));
     }
 
-    @GetMapping("/insertarPedido")
-    public String insertarPedido(@RequestParam(value = "precioPedido") BigDecimal precioPedido,
-                                 @RequestParam(value = "idTransaccion") String idTransaccion) {
-        return (springServiceInsert.insertarPedido(precioPedido, idTransaccion));
+    /*
+        http://localhost:8080/insertarDetallePedido
+        {
+            "idPedido": 1,
+            "idProducto": 1,
+            "cantidadProducto": 2
+        }
+    */
+
+    @PostMapping("/insertarPedido")
+    public String insertarPedido(@RequestBody String json) {
+        return (springServiceInsert.insertarPedido(json));
     }
 
-    @GetMapping("/insertarProducto")
-    public String insertarProducto(@RequestParam(value = "nombreProducto") String nombreProducto,
-                                   @RequestParam(value = "precioProducto") BigDecimal precioProducto,
-                                   @RequestParam(value = "ivaProducto") BigDecimal ivaProducto,
-                                   @RequestParam(value = "stockProducto") Integer stockProducto,
-                                   @RequestParam(value = "descripcion") String descripcion,
-                                   @RequestParam(value = "categoria") Categoria categoria) {
-        return (springServiceInsert.insertarProducto(nombreProducto, precioProducto, ivaProducto, stockProducto, descripcion, categoria));
+    /*
+        http://localhost:8080/insertarPedido
+        ... AÑADIR ...
+    */
+
+    @PostMapping("/insertarProducto")
+    public String insertarProducto(@RequestBody String json) {
+        return (springServiceInsert.insertarProducto(json));
+    }
+    /*
+        http://localhost:8080/insertarProducto
+        {
+            "nombreProducto": "Producto02",
+            "precioProducto": 10.99,
+            "ivaProducto": 0.21,
+            "stockProducto": 100,
+            "descripcion": "Producto02",
+            "categoria": {
+                "idCategoria": 1
+            }
+        }
+    */
+
+    @PostMapping("/insertarUsuario")
+    public String insertarUsuario(@RequestBody String json) {
+        return (springServiceInsert.insertarUsuario(json));
     }
 
-    @GetMapping("/insertarUsuario")
-    public String insertarUsuario(@RequestParam(value = "nombreUsuario") String nombreUsuario,
-                                  @RequestParam(value = "correoElectronico") String correoElectronico,
-                                  @RequestParam(value = "contrasena") String contrasena) {
-        return (springServiceInsert.insertarUsuario(nombreUsuario, correoElectronico, contrasena));
-    }
+    /*
+        http://localhost:8080/insertarUsuario
+        {
+            "nombreUsuario": "Usuario01",
+            "correoElectronico": "usuario01@gmail.com",
+            "contrasena": "Usuario01"
+        }
+    */
 
 }
