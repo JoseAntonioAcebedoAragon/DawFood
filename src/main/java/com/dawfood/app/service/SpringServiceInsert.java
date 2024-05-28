@@ -117,8 +117,7 @@ public class SpringServiceInsert {
             }
 
             // Verificamos si la categoría existe en la base de datos
-            Categoria categoria = categoriaRepository.findById(categoriaDto.getIdCategoria())
-                    .orElse(null);
+            Categoria categoria = categoriaRepository.findById(categoriaDto.getIdCategoria()).orElse(null);
 
             if (categoria == null) {
                 return "La categoría especificada no existe.";

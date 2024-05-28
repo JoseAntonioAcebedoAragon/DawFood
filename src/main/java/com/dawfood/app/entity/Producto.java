@@ -1,5 +1,6 @@
 package com.dawfood.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,6 +37,7 @@ public class Producto {
 
     @ManyToOne
     @JoinColumn(name = "idCategoria", nullable = false)
+    @JsonManagedReference
     private Categoria categoria;
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
