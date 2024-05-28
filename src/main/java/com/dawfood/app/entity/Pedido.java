@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @Entity
@@ -19,7 +18,7 @@ public class Pedido {
     @Column(name = "idPedido")
     private Long idPedido;
 
-    @Column(name = "fechaHoraPedido", nullable = false)
+    @Column(name = "fechaHoraPedido", nullable = false, updatable = false)
     private LocalDateTime fechaHoraPedido;
 
     @Column(name = "precioPedido", nullable = false)
@@ -31,5 +30,10 @@ public class Pedido {
     @ManyToOne
     @JoinColumn(name = "idUsuario", nullable = false)
     private Usuario usuario;
+
+    @PrePersist
+    protected void onCreate() {
+        this.fechaHoraPedido = LocalDateTime.now();
+    }
 
 }

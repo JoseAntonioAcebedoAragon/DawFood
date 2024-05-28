@@ -1,14 +1,9 @@
 package com.dawfood.app.controller;
 
-import com.dawfood.app.entity.Categoria;
-import com.dawfood.app.entity.Pedido;
-import com.dawfood.app.entity.Producto;
 import com.dawfood.app.service.SpringServiceInsert;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.math.BigDecimal;
 
 @RestController
 @Slf4j
@@ -51,7 +46,13 @@ public class SpringControllerInsert {
 
     /*
         http://localhost:8080/insertarPedido
-        ... AÑADIR ...
+        {
+            "idUsuario": 2,
+            "pedido": {
+                "precioPedido": 45.99,
+                "idTransaccion": "abc123"
+            }
+        }
     */
 
     @PostMapping("/insertarProducto")

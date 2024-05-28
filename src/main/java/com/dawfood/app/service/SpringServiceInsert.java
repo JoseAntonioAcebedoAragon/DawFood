@@ -4,11 +4,10 @@ import com.dawfood.app.dto.*;
 import com.dawfood.app.entity.*;
 import com.dawfood.app.repository.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
 
 @Service
 public class SpringServiceInsert {
@@ -56,8 +55,10 @@ public class SpringServiceInsert {
                 return "El producto especificado no existe.";
             }
 
-            // Crear el detalle del pedido y guardarlo
+            // Crear el ID compuesto y el detalle del pedido
+            DetallePedidoId detallePedidoId = new DetallePedidoId(detallePedidoDto.getIdPedido(), detallePedidoDto.getIdProducto());
             DetallePedido detallePedido = new DetallePedido();
+            detallePedido.setId(detallePedidoId);
             detallePedido.setPedido(pedido);
             detallePedido.setProducto(producto);
             detallePedido.setCantidadProducto(detallePedidoDto.getCantidadProducto());
@@ -71,17 +72,22 @@ public class SpringServiceInsert {
 
     public String insertarPedido(String json) {
         try {
-            PedidoDto pedidoDto = objectMapper.readValue(json, PedidoDto.class);
+            ObjectMapper objectMapper = new ObjectMapper();
 
-            // Buscar el pedido y el producto en la base de datos
-            Usuario usuario = usuarioRepository.findById(pedidoDto.getIdPedido()).orElse(null);
+            // Parsear el JSON para obtener el PedidoDto y el idUsuario
+            JsonNode rootNode = objectMapper.readTree(json);
+            Long idUsuario = rootNode.get("idUsuario").asLong();
+            PedidoDto pedidoDto = objectMapper.treeToValue(rootNode.get("pedido"), PedidoDto.class);
 
-            // Validar que el pedido y el producto existan
+            // Buscar el usuario en la base de datos
+            Usuario usuario = usuarioRepository.findById(idUsuario).orElse(null);
+
+            // Validar que el usuario exista
             if (usuario == null) {
                 return "El usuario especificado no existe.";
             }
 
-            // Crear el detalle del pedido y guardarlo
+            // Crear el pedido y guardarlo
             Pedido pedido = new Pedido();
             pedido.setPrecioPedido(pedidoDto.getPrecioPedido());
             pedido.setIdTransaccion(pedidoDto.getIdTransaccion());
@@ -93,7 +99,6 @@ public class SpringServiceInsert {
             return "Error al insertar el pedido.";
         }
     }
-
 
     public String insertarProducto(String json) {
         try {
