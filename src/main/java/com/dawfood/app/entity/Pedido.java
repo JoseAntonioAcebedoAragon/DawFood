@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -34,6 +35,9 @@ public class Pedido {
     @PrePersist
     protected void onCreate() {
         this.fechaHoraPedido = LocalDateTime.now();
-    }
+    };
+
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DetallePedido> detallesPedido;
 
 }

@@ -16,7 +16,7 @@ public class DetallePedido {
 
     @ManyToOne
     @MapsId("idPedido")
-    @JoinColumn(name = "id_pedido", referencedColumnName = "idPedido")
+    @JoinColumn(name = "idPedido", referencedColumnName = "idPedido")
     private Pedido pedido;
 
     @ManyToOne

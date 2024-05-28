@@ -47,7 +47,7 @@ public class SpringControllerInsert {
     /*
         http://localhost:8080/insertarPedido
         {
-            "idUsuario": 2,
+            "idUsuario": 1,
             "pedido": {
                 "precioPedido": 45.99,
                 "idTransaccion": "abc123"
@@ -62,11 +62,11 @@ public class SpringControllerInsert {
     /*
         http://localhost:8080/insertarProducto
         {
-            "nombreProducto": "Producto02",
+            "nombreProducto": "Producto01",
             "precioProducto": 10.99,
             "ivaProducto": 0.21,
             "stockProducto": 100,
-            "descripcion": "Producto02",
+            "descripcion": "Producto01",
             "categoria": {
                 "idCategoria": 1
             }
