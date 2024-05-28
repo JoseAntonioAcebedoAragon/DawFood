@@ -1,16 +1,18 @@
 package com.dawfood.app.controller;
 
 import com.dawfood.app.service.SpringServiceDelete;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
+@RequiredArgsConstructor
 public class SpringControllerDelete {
 
     @Autowired
-    private SpringServiceDelete springServiceDelete;
+    private final SpringServiceDelete springServiceDelete;
 
     @DeleteMapping("/eliminarCategoria/{idcategoria}")
     public String deleteCategoria(@PathVariable(value = "idcategoria") Long idCategoria) {
@@ -19,6 +21,16 @@ public class SpringControllerDelete {
 
     /*
         http://localhost:8080/eliminarCategoria/1
+    */
+
+    @DeleteMapping("/eliminarDetallePedido/{idpedido}/{idproducto}")
+    public String deleteUsuario(@PathVariable(value = "idpedido") Long idPedido,
+                                @PathVariable(value = "idproducto") Long idProducto) {
+        return springServiceDelete.deleteDetallePedido(idPedido, idProducto);
+    }
+
+    /*
+        http://localhost:8080/eliminarDetallePedido/1/1
     */
 
     @DeleteMapping("/eliminarPedido/{idpedido}")
@@ -46,16 +58,6 @@ public class SpringControllerDelete {
 
     /*
         http://localhost:8080/eliminarUsuario/1
-    */
-
-    @DeleteMapping("/eliminarDetallePedido/{idpedido}/{idproducto}")
-    public String deleteUsuario(@PathVariable(value = "idpedido") Long idPedido,
-                                @PathVariable(value = "idproducto") Long idProducto) {
-        return springServiceDelete.deleteDetallePedido(idPedido, idProducto);
-    }
-
-    /*
-        http://localhost:8080/eliminarDetallePedido/1/1
     */
 
 }

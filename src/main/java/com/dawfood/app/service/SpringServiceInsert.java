@@ -117,8 +117,6 @@ public class SpringServiceInsert {
             }
 
             // Verificamos si la categoría existe en la base de datos
-                // Aquí el problema es que idCategoria en la bd se pone solo, autoincrement, por lo que no hay
-                // que ponerlo en java, y por eso da este problema, ya que he quitado del CategorioDTO el idCategoria.
             Categoria categoria = categoriaRepository.findById(categoriaDto.getIdCategoria())
                     .orElse(null);
 

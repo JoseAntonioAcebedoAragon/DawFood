@@ -1,16 +1,18 @@
 package com.dawfood.app.controller;
 
 import com.dawfood.app.service.SpringServiceInsert;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
+@RequiredArgsConstructor
 public class SpringControllerInsert {
 
     @Autowired
-    private SpringServiceInsert springServiceInsert;
+    private final SpringServiceInsert springServiceInsert;
 
     @PostMapping("/insertarCategoria")
     public String insertarCategoria(@RequestBody String json) {
